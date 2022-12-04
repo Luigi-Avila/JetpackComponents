@@ -39,6 +39,9 @@ class MainActivity : ComponentActivity() {
                     /*Column() {
                         MyTextFieldOutlined()
                     } */
+
+                    var myText by rememberSaveable { mutableStateOf("") }
+                    MyTextField(myText) { myText = it }
                 }
             }
         }
@@ -85,9 +88,8 @@ fun MyTextFieldAdvance() {
 }
 
 @Composable
-fun MyTextField() {
-    var myText by rememberSaveable { mutableStateOf("") }
-    TextField(value = myText, onValueChange = { myText = it })
+fun MyTextField(name: String, onValueChange: (String) -> Unit) {
+    TextField(value = name, onValueChange = { onValueChange(it) })
 }
 
 
