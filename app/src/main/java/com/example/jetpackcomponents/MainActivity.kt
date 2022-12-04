@@ -1,8 +1,10 @@
 package com.example.jetpackcomponents
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -40,8 +42,12 @@ class MainActivity : ComponentActivity() {
                         MyTextFieldOutlined()
                     } */
 
+                    /* ESTATE HOSTING
                     var myText by rememberSaveable { mutableStateOf("") }
                     MyTextField(myText) { myText = it }
+                     */
+
+                    MyButtonExample()
                 }
             }
         }
@@ -56,8 +62,49 @@ fun DefaultPreview() {
         //MyTextField()
         //MyTextFieldAdvance()
         //MyTextFieldOutlined()
+        MyButtonExample()
     }
 }
+
+
+@Composable
+fun MyButtonExample() {
+    var enable by rememberSaveable { mutableStateOf(true) }
+    Column(
+        Modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        Button(
+            onClick = { enable = false },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Blue,
+                contentColor = Color.White
+            ),
+            border = BorderStroke(5.dp, Color.Black),
+            enabled = enable
+        ) {
+            Text(text = "Pulsar")
+        }
+
+        OutlinedButton(
+            onClick = { enable = false }, enabled = enable, colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Cyan,
+                contentColor = Color.Black,
+                disabledBackgroundColor = Color.White,
+                disabledContentColor = Color.Blue
+            )
+        ) {
+            Text(text = "Hola")
+        }
+
+        TextButton(onClick = { }) {
+            Text(text = "Text Button")
+        }
+
+    }
+}
+
 
 @Composable
 fun MyTextFieldOutlined() {
