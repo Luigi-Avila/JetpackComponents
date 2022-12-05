@@ -60,6 +60,13 @@ class MainActivity : ComponentActivity() {
                     //MyProgress()
                     //MyCheckBoxWithText()
 
+                    val options = getOptions(titles = listOf("Hi", "programmer", "list", "check"))
+                    Column() {
+                        options.forEach {
+                            MyCheckBoxWithTextAdvance(checkInfo = it)
+                        }
+                    }
+
                 }
             }
         }
@@ -99,16 +106,13 @@ fun DefaultPreview() {
 
 @Composable
 fun MyCheckBoxWithTextAdvance(checkInfo: CheckInfo) {
-    Column() {
-        Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
-                checked = checkInfo.selected,
-                onCheckedChange = { checkInfo.onCheckedChange(!checkInfo.selected) })
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = checkInfo.name)
-        }
+    Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Checkbox(
+            checked = checkInfo.selected,
+            onCheckedChange = { checkInfo.onCheckedChange(!checkInfo.selected) })
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(text = checkInfo.name)
     }
-
 }
 
 @Composable
