@@ -75,10 +75,31 @@ fun DefaultPreview() {
         //MyImageAdvance()
         //MyIcon()
         //MyProgress()
-        MyProgressAdvance()
+        //MyProgressAdvance()
+        MySwitch()
     }
 }
 /**/
+
+@Composable
+fun MySwitch() {
+    var state by rememberSaveable() { mutableStateOf(false) }
+    Switch(
+        checked = state,
+        onCheckedChange = { state = !state },
+        enabled = false,
+        colors = SwitchDefaults.colors(
+            uncheckedThumbColor = Color.Red,
+            checkedThumbColor = Color.Green,
+            uncheckedTrackColor = Color.Magenta,
+            checkedTrackColor = Color.Cyan,
+            checkedTrackAlpha = 0.1f,
+            uncheckedTrackAlpha = 0.1f,
+            disabledCheckedThumbColor = Color.Yellow,
+            disabledCheckedTrackColor = Color.Yellow
+        )
+    )
+}
 
 @Composable
 fun MyProgressAdvance() {
