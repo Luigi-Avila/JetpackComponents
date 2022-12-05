@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -69,8 +71,19 @@ fun DefaultPreview() {
         //MyTextFieldAdvance()
         //MyTextFieldOutlined()
         //MyButtonExample()
-        MyImageAdvance()
+        //MyImageAdvance()
+        MyIcon()
     }
+}
+
+
+@Composable
+fun MyIcon() {
+    Icon(
+        imageVector = Icons.Rounded.Star,
+        contentDescription = "Icon",
+        tint = Color.Yellow
+    )
 }
 
 
