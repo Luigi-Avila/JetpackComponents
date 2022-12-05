@@ -56,7 +56,8 @@ class MainActivity : ComponentActivity() {
 
                     //MyButtonExample()
 
-                    MyProgress()
+                    //MyProgress()
+                    MyCheckBoxWithText()
                 }
             }
         }
@@ -77,10 +78,25 @@ fun DefaultPreview() {
         //MyProgress()
         //MyProgressAdvance()
         //MySwitch()
-        MyCheckBox()
+        //MyCheckBox()
+        MyCheckBoxWithText()
     }
 }
 /**/
+
+
+@Composable
+fun MyCheckBoxWithText(){
+    var state by rememberSaveable { mutableStateOf(false) }
+    Column() {
+        Row(Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(checked = state, onCheckedChange = { state = !state})
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "Esto es un ejemplo")
+        }
+    }
+
+}
 
 @Composable
 fun MyCheckBox(){
