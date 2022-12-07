@@ -69,7 +69,9 @@ class MainActivity : ComponentActivity() {
                         }
                     } */
 
-                    MyTriStatusCheckBox()
+                    //MyTriStatusCheckBox()
+
+                    MyRadioButton()
 
                 }
             }
@@ -107,6 +109,20 @@ fun DefaultPreview() {
     }
 }
 /**/
+
+
+@Composable
+fun MyRadioButton(){
+    var status by rememberSaveable { mutableStateOf(false) }
+    Row(Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(selected = status, onClick = { status = !status }, enabled = true, colors = RadioButtonDefaults.colors(
+            selectedColor = Color.Red,
+            unselectedColor = Color.Yellow,
+            disabledColor = Color.Green
+        ))
+        Text(text = "Hola Mundo")
+    }
+}
 
 @Composable
 fun MyTriStatusCheckBox(){
