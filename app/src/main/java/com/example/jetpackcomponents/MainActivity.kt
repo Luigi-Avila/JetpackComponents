@@ -71,7 +71,11 @@ class MainActivity : ComponentActivity() {
 
                     //MyTriStatusCheckBox()
 
-                    MyRadioButton()
+                    //MyRadioButton()
+
+                    // Multiple Radio button With State Hosting
+                    var selected by rememberSaveable { mutableStateOf("Angel") }
+                    MyRadioButtonStateHosting(name = selected, onItemSelected = { selected = it })
 
                 }
             }
@@ -110,6 +114,28 @@ fun DefaultPreview() {
 }
 /**/
 
+
+@Composable
+fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit){
+    Column(Modifier.fillMaxSize()) {
+        Row() {
+            RadioButton(selected = name === "Aris", onClick = { onItemSelected("Aris") })
+            Text(text = "Aris")
+        }
+        Row() {
+            RadioButton(selected = name === "David", onClick = { onItemSelected("David") })
+            Text(text = "David")
+        }
+        Row() {
+            RadioButton(selected = name === "Luis", onClick = { onItemSelected("Luis") })
+            Text(text = "Luis")
+        }
+        Row() {
+            RadioButton(selected = name === "Angel", onClick = { onItemSelected("Angel") })
+            Text(text = "Angel")
+        }
+    }
+}
 
 @Composable
 fun MyRadioButton(){
