@@ -84,7 +84,9 @@ class MainActivity : ComponentActivity() {
                         //MyCard()
                         //MyBadgeBox()
                         //MyDivider()
-                        MyDropDownMenu()
+                        //MyDropDownMenu()
+                        //MySlider()
+                        MyAdvanceSlider()
                     }
                 }
             }
@@ -122,7 +124,9 @@ fun DefaultPreview() {
         //MyCard()
         //MyBadgeBox()
         //MyDivider()
-        MyDropDownMenu()
+        //MyDropDownMenu()
+        //MySlider()
+        MyAdvanceSlider()
     }
 }
 /**/
