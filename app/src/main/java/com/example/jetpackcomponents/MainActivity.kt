@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
             JetpackComponentsTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    //modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
                     //MyText()
@@ -94,10 +94,22 @@ class MainActivity : ComponentActivity() {
                         Button(onClick = { showDialog = true}) {
                             Text(text = "Show dialog")
                         }
+                        /*
                         MyDialog(
                             show = showDialog,
                             onDismiss = { showDialog = false },
                             onConfirm = { Log.i("Luigi", "Confirm click") })
+
+                         */
+
+                        /*
+                            MySimpleCustomDialog(show = showDialog, onDismiss = { showDialog = false})
+                         */
+                        /*
+                        MyCustomDialog(show = showDialog, onDismiss = { showDialog = false})
+
+                         */
+                        MyConfirmationDialog(show = showDialog, onDismiss = { showDialog = false})
                     }
 
                 }
@@ -141,6 +153,8 @@ fun DefaultPreview() {
         //MyAdvanceSlider()
         //MyRangeSlider()
         //MyDialog(show = true)
+        //MyCustomDialog(show = true, onDismiss = { false })
+        MyConfirmationDialog(show = true, onDismiss = {true})
     }
 }
 /**/
@@ -212,20 +226,20 @@ fun MyCard() {
 
 @Composable
 fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit) {
-    Column(Modifier.fillMaxSize()) {
-        Row() {
+    Column(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name === "Aris", onClick = { onItemSelected("Aris") })
             Text(text = "Aris")
         }
-        Row() {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name === "David", onClick = { onItemSelected("David") })
             Text(text = "David")
         }
-        Row() {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name === "Luis", onClick = { onItemSelected("Luis") })
             Text(text = "Luis")
         }
-        Row() {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(selected = name === "Angel", onClick = { onItemSelected("Angel") })
             Text(text = "Angel")
         }
