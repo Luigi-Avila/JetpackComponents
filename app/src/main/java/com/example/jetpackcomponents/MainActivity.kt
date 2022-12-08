@@ -74,9 +74,13 @@ class MainActivity : ComponentActivity() {
                     //MyRadioButton()
 
                     // Multiple Radio button With State Hosting
-                    var selected by rememberSaveable { mutableStateOf("Angel") }
+                    /* var selected by rememberSaveable { mutableStateOf("Angel") }
                     MyRadioButtonStateHosting(name = selected, onItemSelected = { selected = it })
 
+                     */
+                    Column() {
+                        MyCard()
+                    }
                 }
             }
         }
@@ -110,10 +114,30 @@ fun DefaultPreview() {
         //MySwitch()
         //MyCheckBox()
         //MyCheckBoxWithText()
+        MyCard()
     }
 }
 /**/
 
+@Composable
+fun MyCard(){
+    Card(
+        Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        elevation = 25.dp,
+        shape = MaterialTheme.shapes.small,
+        backgroundColor = Color.Blue,
+        contentColor = Color.Green,
+        border = BorderStroke(2.dp, Color.Black)
+    ) {
+        Column(Modifier.padding(16.dp)) {
+            Text(text = "Ejemplo 1")
+            Text(text = "Ejemplo 2")
+            Text(text = "Ejemplo 3")
+        }
+    }
+}
 
 @Composable
 fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit){
