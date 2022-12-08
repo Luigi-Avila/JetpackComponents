@@ -87,8 +87,19 @@ class MainActivity : ComponentActivity() {
                         //MyDropDownMenu()
                         //MySlider()
                         //MyAdvanceSlider()
-                        MyRangeSlider()
+                        //MyRangeSlider()
                     }
+                    var showDialog by rememberSaveable() { mutableStateOf(false) }
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+                        Button(onClick = { showDialog = true}) {
+                            Text(text = "Show dialog")
+                        }
+                        MyDialog(
+                            show = showDialog,
+                            onDismiss = { showDialog = false },
+                            onConfirm = { Log.i("Luigi", "Confirm click") })
+                    }
+
                 }
             }
         }
@@ -128,7 +139,8 @@ fun DefaultPreview() {
         //MyDropDownMenu()
         //MySlider()
         //MyAdvanceSlider()
-        MyRangeSlider()
+        //MyRangeSlider()
+        //MyDialog(show = true)
     }
 }
 /**/
@@ -138,7 +150,7 @@ fun MyDropDownMenu() {
     var selectedText by rememberSaveable { mutableStateOf("") }
     var expanded by rememberSaveable { mutableStateOf(false) }
     val desserts = listOf("Candies", "Cake", "Muffin", "Chocolate", "Fruit", "Coffee")
-    
+
     Column(Modifier.padding(20.dp)) {
         OutlinedTextField(
             value = selectedText,
@@ -154,8 +166,8 @@ fun MyDropDownMenu() {
             modifier = Modifier.fillMaxWidth()
         ) {
             desserts.map { dessert ->
-                DropdownMenuItem(onClick = { 
-                    expanded = false  
+                DropdownMenuItem(onClick = {
+                    expanded = false
                     selectedText = dessert
                 }) {
                     Text(text = dessert)
