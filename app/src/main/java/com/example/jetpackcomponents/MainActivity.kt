@@ -81,7 +81,8 @@ class MainActivity : ComponentActivity() {
                      */
                     Column {
                         //MyCard()
-                        MyBadgeBox()
+                        //MyBadgeBox()
+                        MyDivider()
                     }
                 }
             }
@@ -117,10 +118,16 @@ fun DefaultPreview() {
         //MyCheckBox()
         //MyCheckBoxWithText()
         //MyCard()
-        MyBadgeBox()
+        //MyBadgeBox()
+        MyDivider()
     }
 }
 /**/
+
+@Composable
+fun MyDivider(){
+    Divider(Modifier.padding(16.dp), color = Color.Blue)
+}
 
 @Composable
 fun MyBadgeBox() {
