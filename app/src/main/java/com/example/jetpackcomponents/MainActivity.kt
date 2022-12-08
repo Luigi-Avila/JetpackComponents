@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -82,7 +83,8 @@ class MainActivity : ComponentActivity() {
                     Column {
                         //MyCard()
                         //MyBadgeBox()
-                        MyDivider()
+                        //MyDivider()
+                        MyDropDownMenu()
                     }
                 }
             }
@@ -119,19 +121,52 @@ fun DefaultPreview() {
         //MyCheckBoxWithText()
         //MyCard()
         //MyBadgeBox()
-        MyDivider()
+        //MyDivider()
+        MyDropDownMenu()
     }
 }
 /**/
 
 @Composable
-fun MyDivider(){
+fun MyDropDownMenu() {
+    var selectedText by rememberSaveable { mutableStateOf("") }
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    val desserts = listOf("Candies", "Cake", "Muffin", "Chocolate", "Fruit", "Coffee")
+    
+    Column(Modifier.padding(20.dp)) {
+        OutlinedTextField(
+            value = selectedText,
+            onValueChange = { selectedText = it },
+            enabled = false,
+            readOnly = true,
+            modifier = Modifier
+                .clickable { expanded = true }
+                .fillMaxWidth())
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            desserts.map { dessert ->
+                DropdownMenuItem(onClick = { 
+                    expanded = false  
+                    selectedText = dessert
+                }) {
+                    Text(text = dessert)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MyDivider() {
     Divider(Modifier.padding(16.dp), color = Color.Blue)
 }
 
 @Composable
 fun MyBadgeBox() {
-    BadgedBox(modifier = Modifier.padding(16.dp), badge = { Text(text = "5")}) {
+    BadgedBox(modifier = Modifier.padding(16.dp), badge = { Text(text = "5") }) {
         Icon(imageVector = Icons.Default.Favorite, contentDescription = "")
     }
 }
