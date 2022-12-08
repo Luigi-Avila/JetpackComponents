@@ -86,7 +86,8 @@ class MainActivity : ComponentActivity() {
                         //MyDivider()
                         //MyDropDownMenu()
                         //MySlider()
-                        MyAdvanceSlider()
+                        //MyAdvanceSlider()
+                        MyRangeSlider()
                     }
                 }
             }
@@ -126,7 +127,8 @@ fun DefaultPreview() {
         //MyDivider()
         //MyDropDownMenu()
         //MySlider()
-        MyAdvanceSlider()
+        //MyAdvanceSlider()
+        MyRangeSlider()
     }
 }
 /**/
