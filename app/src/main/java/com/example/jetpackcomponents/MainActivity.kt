@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -78,8 +79,9 @@ class MainActivity : ComponentActivity() {
                     MyRadioButtonStateHosting(name = selected, onItemSelected = { selected = it })
 
                      */
-                    Column() {
-                        MyCard()
+                    Column {
+                        //MyCard()
+                        MyBadgeBox()
                     }
                 }
             }
@@ -114,13 +116,22 @@ fun DefaultPreview() {
         //MySwitch()
         //MyCheckBox()
         //MyCheckBoxWithText()
-        MyCard()
+        //MyCard()
+        MyBadgeBox()
     }
 }
 /**/
 
 @Composable
-fun MyCard(){
+fun MyBadgeBox() {
+    BadgedBox(modifier = Modifier.padding(16.dp), badge = { Text(text = "5")}) {
+        Icon(imageVector = Icons.Default.Favorite, contentDescription = "")
+    }
+}
+
+
+@Composable
+fun MyCard() {
     Card(
         Modifier
             .fillMaxWidth()
@@ -140,7 +151,7 @@ fun MyCard(){
 }
 
 @Composable
-fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit){
+fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit) {
     Column(Modifier.fillMaxSize()) {
         Row() {
             RadioButton(selected = name === "Aris", onClick = { onItemSelected("Aris") })
@@ -162,23 +173,28 @@ fun MyRadioButtonStateHosting(name: String, onItemSelected: (String) -> Unit){
 }
 
 @Composable
-fun MyRadioButton(){
+fun MyRadioButton() {
     var status by rememberSaveable { mutableStateOf(false) }
     Row(Modifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(selected = status, onClick = { status = !status }, enabled = true, colors = RadioButtonDefaults.colors(
-            selectedColor = Color.Red,
-            unselectedColor = Color.Yellow,
-            disabledColor = Color.Green
-        ))
+        RadioButton(
+            selected = status,
+            onClick = { status = !status },
+            enabled = true,
+            colors = RadioButtonDefaults.colors(
+                selectedColor = Color.Red,
+                unselectedColor = Color.Yellow,
+                disabledColor = Color.Green
+            )
+        )
         Text(text = "Hola Mundo")
     }
 }
 
 @Composable
-fun MyTriStatusCheckBox(){
-    var status by rememberSaveable { mutableStateOf(ToggleableState.Off)}
+fun MyTriStatusCheckBox() {
+    var status by rememberSaveable { mutableStateOf(ToggleableState.Off) }
     TriStateCheckbox(state = status, onClick = {
-        status = when(status){
+        status = when (status) {
             ToggleableState.On -> ToggleableState.Off
             ToggleableState.Off -> ToggleableState.Indeterminate
             ToggleableState.Indeterminate -> ToggleableState.On
